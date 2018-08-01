@@ -1,2 +1,2 @@
 clock: python clock.py
-sync-events: ./bin/sync-events
+sync-events: node bin/sync-events
