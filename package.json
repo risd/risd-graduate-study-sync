@@ -30,6 +30,6 @@
     "moment-timezone": "^0.4.0",
     "request": "^2.54.0",
     "run-parallel-limit": "^1.0.3",
-    "webhook-cms-pull": "^1.0.3"
+    "webhook-cms-pull": "^1.0.4"
   }
 }
