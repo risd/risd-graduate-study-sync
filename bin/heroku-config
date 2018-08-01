@@ -12,5 +12,6 @@ args = args.concat(confArgs);
 args = args.concat(['--app', 'gradstudy-data-sync']);
 
 debug(args);
+debug(args.join(' '))
 
 spawn('heroku', args).stdout.pipe(process.stdout);
