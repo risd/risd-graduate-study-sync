@@ -1,0 +1,20 @@
+#!/usr/bin/env node
+
+var debug = require('debug')('sync-events:cli');
+var Sync = require( 'webhook-cms-pull' );
+var Events = require('../sources/events/index.js');
+
+var Env = require('../env.js')();
+var envConf = Env.asObject();
+
+
+Sync( {
+  sourcePrototype: Events,
+  env: envConf,
+  syncNode: 'syncEvents'
+}, onComplete )
+
+function onComplete ( error ) {
+  if ( error ) console.log( error )
+  process.exit()
+}

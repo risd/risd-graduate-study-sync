@@ -1,0 +1,16 @@
+#!/usr/bin/env node
+
+var debug = require('debug')('heroku-config');
+var spawn = require('child_process').spawn;
+
+var Env = require('../env.js')();
+
+var args = ['config:set'];
+var confArgs = Env.asString().split( ' ' );
+
+args = args.concat(confArgs);
+args = args.concat(['--app', 'edu-data-sync']);
+
+debug(args);
+
+spawn('heroku', args).stdout.pipe(process.stdout);
