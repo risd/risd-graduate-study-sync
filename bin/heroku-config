@@ -9,7 +9,7 @@ var args = ['config:set'];
 var confArgs = Env.asString().split( ' ' );
 
 args = args.concat(confArgs);
-args = args.concat(['--app', 'edu-data-sync']);
+args = args.concat(['--app', 'gradstudy-data-sync']);
 
 debug(args);
 
