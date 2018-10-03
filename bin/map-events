@@ -1,0 +1,19 @@
+#!/usr/bin/env node
+
+var debug = require('debug')('map-events:cli');
+var MapCoordinator = require( 'webhook-cms-pull/map.js' );
+var Events = require('../maps/localist-events.js');
+
+var envConf = require('../env.js')().asObject()
+
+
+MapCoordinator( {
+  mapPrototype: Events,
+  firebase: envConf.firebase,
+  signal: envConf.signal,
+}, onComplete )
+
+function onComplete ( error ) {
+  if ( error ) console.log( error )
+  process.exit()
+}

@@ -6,5 +6,6 @@ sched = BlockingScheduler()
 @sched.scheduled_job('interval', minutes=60)
 def timed_job():
     subprocess.call(['sync-events'])
+    subprocess.call(['map-events'])
 
 sched.start()
