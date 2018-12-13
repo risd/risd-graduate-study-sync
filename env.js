@@ -55,7 +55,7 @@ function Env ( options ) {
     },
     firebase: {
       firebaseName: environment.FIREBASE_NAME,
-      firebaseKey : environment.FIREBASE_KEY,
+      firebaseServiceAccountKey : JSON.parse( environment.FIREBASE_SERVICE_ACCOUNT ),
       siteName    : environment.SITE_NAME,
       siteKey     : environment.SITE_KEY,
     },
