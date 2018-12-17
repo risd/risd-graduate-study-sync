@@ -15,9 +15,6 @@ module.exports = Env;
  * AWS_KEY
  * AWS_SECRET
  * AWS_BUCKET
- * ELASTIC_SEARCH_SERVER
- * ELASTIC_SEARCH_USER
- * ELASTIC_SEARCH_PASSWORD
  * REPORT_BUCKET
  * REPORT_REGION
  * REPORT_FIREBASE_PATH
@@ -47,12 +44,6 @@ function Env ( options ) {
   }
 
   var configuration = {
-    elasticSearch: {
-      server  : environment.ELASTIC_SEARCH_SERVER,
-      user    : environment.ELASTIC_SEARCH_USER,
-      password: environment.ELASTIC_SEARCH_PASSWORD,
-      siteName: environment.SITE_NAME,
-    },
     firebase: {
       firebaseName: environment.FIREBASE_NAME,
       firebaseServiceAccountKey : JSON.parse( environment.FIREBASE_SERVICE_ACCOUNT ),
@@ -79,7 +70,6 @@ function Env ( options ) {
     },
   }
 
-  debug( configuration.elasticSearch )
   debug( configuration.firebase )
   debug( configuration.build )
   debug( configuration.aws )
