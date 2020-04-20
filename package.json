@@ -1,7 +1,7 @@
 {
   "name": "gradstudy-data-sync",
-  "version": "2.0.1",
-  "description": "Sync risd.edu datastore with external data sources.",
+  "version": "2.1.0",
+  "description": "Sync graduatestudy.risd.edu datastore with external data sources.",
   "main": "index.js",
   "repository": {
     "type": "git",
@@ -29,6 +29,6 @@
     "moment-timezone": "^0.4.0",
     "request": "^2.54.0",
     "run-parallel-limit": "^1.0.3",
-    "webhook-cms-pull": "^2.0.0"
+    "webhook-cms-pull": "^2.1.0"
   }
 }
