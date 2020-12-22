@@ -281,6 +281,7 @@ Events.prototype.updateWebhookValueWithSourceValue = function (wh, src) {
     }
     
     wh.localist_description_text = src.description_text || '';
+    wh.localist_description_html = src.description || '';
     wh.localist_ticket_cost = src.ticket_cost || '';
     wh.localist_filters__department = (function (filters) {
             if ('departments' in filters) {
