@@ -1,6 +1,6 @@
 {
   "name": "gradstudy-data-sync",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "description": "Sync graduatestudy.risd.edu datastore with external data sources.",
   "main": "index.js",
   "repository": {
