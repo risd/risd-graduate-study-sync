@@ -52,21 +52,9 @@ function Env ( options ) {
     },
     signal: {
       payload: {
-        userid: 'mgdevelopers@risd.edu',
+        userid: environment.SITE_USER,
         sitename: environment.SITE_NAME,
       },
-    },
-    aws: {
-      key: environment.AWS_KEY,
-      secret: environment.AWS_SECRET,
-      bucket: environment.AWS_BUCKET,
-    },
-    report: {
-      awsBucket: environment.REPORT_BUCKET,
-      awsRegion: environment.REPORT_REGION,
-      firebasePath: environment.REPORT_FIREBASE_PATH,
-      awsKey: environment.AWS_KEY,
-      awsSecret: environment.AWS_SECRET,
     },
   }
 
