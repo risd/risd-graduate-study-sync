@@ -56,6 +56,9 @@ function Env ( options ) {
         sitename: environment.SITE_NAME,
       },
     },
+    involved: {
+      apiKey: environment.INVOLVED_API_KEY,
+    },
   }
 
   debug( configuration.firebase )

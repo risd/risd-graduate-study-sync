@@ -15,7 +15,7 @@
     "sync-events": "./bin/sync-events"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "tape test/*.js",
     "sync-events": "./bin/sync-events"
   },
   "author": "Ruben Rodriguez <mail@rubenrodriguez.me> (http://rubenrodriguez.me/)",
@@ -30,5 +30,8 @@
     "request": "^2.88.2",
     "run-parallel-limit": "^1.0.3",
     "webhook-cms-pull": "^3.0.0"
+  },
+  "devDependencies": {
+    "tape": "^5.5.2"
   }
 }
