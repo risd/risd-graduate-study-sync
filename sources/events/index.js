@@ -358,41 +358,15 @@ Events.prototype.updateWebhookValueNotInSource = function () {
 
         if (row.inSource === false) {
             // not in source
-            var endOfLastDayStr = addEndOfDay(
-                row.webhook.localist_date_range_end);
-
-            // reasons for removal
-            var noEndDate = endOfLastDayStr === false; // no last date
-            var isWellInThePast = moment(endOfLastDayStr).isBefore(now.subtract(60, 'days')); // removed from the API, being in the past
-
-            if ( noEndDate || isWellInThePast ) {
-                // last day of the event occured before 60 days ago
-                remove = true;
-            }
-        }
-
-        if (remove) {
-            debug('removing:' + row.webhook.name);
-            var stream = this;
             self._firebase
                 .webhook
                 .child(row.whKey)
                 .remove(function onComplete () {
                     next(null, row);
                 });
-        } else {
+        }
+        else {
             next();
         }
-
-        
-    }
-    
-    function addEndOfDay (dateString) {
-        var justBeforeMidnight = 'T23:59:59-04:00';
-        try {
-            return [dateString.split('T')[0], justBeforeMidnight].join('');    
-        } catch (error) {
-            return false;
-        }   
     }
 };
