@@ -17,7 +17,7 @@ function InvolvedEvents (envConf) {
 
 InvolvedEvents.prototype.webhookContentType = ''
 InvolvedEvents.prototype.keyFromWebhook = function (row) {
-  // return row.localist_uid;
+  // return row.engage_uid;
 };
 InvolvedEvents.prototype.keyFromSource = function (row) {
   return row.id;
@@ -31,6 +31,10 @@ InvolvedEvents.prototype.listSource = function () {
   let itemCount = 0
 
   const eventStream = miss.through.obj()
+
+  const headers = {
+    'X-Engage-Api-Key': self.apiKey,
+  }
 
   process.nextTick(() => requestEvents())
 
@@ -47,9 +51,7 @@ InvolvedEvents.prototype.listSource = function () {
       request({
         method: 'GET',
         url,
-        headers: {
-          'X-Engage-Api-Key': self.apiKey,
-        },
+        headers,
       }),
       miss.through.obj(
         function concat (row, enc, next) {
@@ -61,8 +63,11 @@ InvolvedEvents.prototype.listSource = function () {
             const result = JSON.parse(data)
             if (totalItems === -1) totalItems = result.totalItems
             itemCount += result.items.length
-            // filter items based on what is going to be on the site
-            // before pushing into the stream
+            // stores all items in the future. there should be a secondary
+            // flag to determine its placement on the gradstudy website
+            // let the frontend template logic determine that so we don't
+            // discard an event here and the event isn't modified the CMS
+            // to know its been removed from the site.
             result.items.forEach((item) => {
               eventStream.push(item)
             })
@@ -94,3 +99,9 @@ InvolvedEvents.prototype.listSource = function () {
     return `${qs.length > 0 ? '?' : ''}${qs.join('&')}`
   }
 }
+
+/**
+ * updateWebhookValueNotInSource
+ * - if the value is not in source, and is in the future, delete it
+ * - if the value is not in source, and is in the past, delete it
+ */
